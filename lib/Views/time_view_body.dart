@@ -103,9 +103,18 @@ class _TimeViewBodyState extends State<TimeViewBody> {
     });
   }
 
+  String temp = '';
+calledOnlyAfter7Sec(){
+  Timer(const Duration(seconds: 7), () {
+    setState(() {
+      temp = '😍😍';
+    });
+  });
+}
   @override
   void initState() {
     changeEverySecond();
+    calledOnlyAfter7Sec();
     super.initState();
   }
 
@@ -126,6 +135,10 @@ class _TimeViewBodyState extends State<TimeViewBody> {
           TextHome(
             text:
                 '${hour.toString().padLeft(2, '0')} : ${min.padLeft(2, '0')} : ${sec.padLeft(2, '0')}',
+          ),
+          TextHome(
+            text:
+            temp,
           ),
         ],
       ),
